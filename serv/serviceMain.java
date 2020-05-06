@@ -10,7 +10,7 @@ public class serviceMain {
     int serviceReceiver;
     int serviceOther;
     
-    double accountValue; //WIKTOR ZRÓB KONTO KLIENTA TO MA BYĆ SALDO KLIENTA
+    double accountValue;
 
     public static ArrayList<String[]> saver = new ArrayList<>();
 
@@ -19,16 +19,32 @@ public class serviceMain {
         String s =""+o;
         return s;
     }
+    
     /**
-     * Szybka metoda zwracająca nam saldo klienta. Powinna być rozbudowana do pobierania ostatniej wartości @param accountValue z pliku klienta
-     * ale Wiktor musi zrobić profil klienta.
+     * Szybka metoda zwracająca nam saldo klienta. Powinna być rozbudowana do pobierania ostatniej wartości @param accountValue z pliku klienta.
      * @param o
      * @param accountValue
      * @return
      */
     public double accountAfterService(double o, double accountValue){
-        double accountAfterService = accountValue-o;
-        return accountAfterService;
+        return accountValue-o;
+    }
+
+    public void TransferWriter(File clientTransferFile, double serviceValue, int serviceReceiver, double accountValue){
+        OutputStream os = new FileOutputStream(clientTransferFile);
+        BufferedWriter bw = new BufferedWriter(os);
+        String[] newRequest = {toString(serviceReceiver)+";", toString(serviceValue)+";", toString(accountAfterService(serviceValue, accountValue))};
+        if(accountAfterService(serviceValue, accountValue)>=0){
+            saver.add(newRequest);
+            String def =" ";
+            for(int j=0; j<newRequest.length; j++){
+                def= def+line[j]+";";
+            }
+            bw.write(def);
+            bw.newLine();
+        }else{
+            throw LackOfFoundsException();
+        }
     }
 
     /**
@@ -46,22 +62,9 @@ public class serviceMain {
                 String[] line = testRow.split(";");
                 saver.add(line);
             }
-            BufferedWriter bw = new BufferedWriter(new FileWriter(clientTransferFile));
-            String[] newRequest = {toString(serviceReceiver)+";", toString(serviceValue)+";", toString(accountAfterService(serviceValue, accountValue)),";"};
-            if(accountAfterService(serviceValue, accountValue)>=0){
-                saver.add(newRequest);
-                String def =" ";
-                for(int j=0; j<newRequest.length; j++){
-                    def= def+line[j]+";";
-                }
-                bw.write(def);
-                bw.newLine();
-            }else{
-                throw LackOfFoundsException();
-            }
+            TransferWriter(clientTransferFile, serviceValue, serviceReceiver, accountValue);
         }else{
-
+           TransferWriter(clientTransferFile, serviceValue, serviceReceiver, accountValue);
         }
-
     }
 }
