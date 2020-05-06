@@ -7,7 +7,10 @@ public class LackOfFoundsException extends Exception{
     public LackOfFoundsException() {
         System.out.println("Brak wystarczających środków na koncie na przeprowadzenie takie operacji.");
     }
-    public LackOfFoundsException(String errorMessege, Throwable err){
-        super(errorMessege, err);
+    public LackOfFoundsException(String errorMessage){
+        super(errorMessage);
+    }
+    public LackOfFoundsException(String errorMessage, Throwable err){
+        super(errorMessage, err);
     }
 }
