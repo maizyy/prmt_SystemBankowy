@@ -39,7 +39,6 @@ public class serviceMain {
      */
     public void newTransfer(double serviceValue, int serviceReceiver, double accountValue){
         File clientTransferFile = new File(cleintId+"transfer");
-        boolean exists = clientTransferFile.exists();
         if((clientTransferFile.exists()) == true){
             String testRow;
             BufferedReader br = new BufferedReader(new FileReader(clientTransferFile));
@@ -48,18 +47,15 @@ public class serviceMain {
                 saver.add(line);
             }
             BufferedWriter bw = new BufferedWriter(new FileWriter(clientTransferFile));
-            String[] newRequest = {toString(serviceReceiver), toString(serviceValue), toString(accountAfterService(serviceValue, accountValue))};
+            String[] newRequest = {toString(serviceReceiver)+";", toString(serviceValue)+";", toString(accountAfterService(serviceValue, accountValue)),";"};
             if(accountAfterService(serviceValue, accountValue)>=0){
                 saver.add(newRequest);
-                for(int i=0; i<saver.size(); i++){
-                    String def =" ";
-                    String[] newLine = saver.get(i);
-                    for(int j=0; j<newLine.length; j++){
-                        def= def+line[j]+";";
-                    }
-                    bw.write(def);
-                    bw.newLine();
+                String def =" ";
+                for(int j=0; j<newRequest.length; j++){
+                    def= def+line[j]+";";
                 }
+                bw.write(def);
+                bw.newLine();
             }else{
                 throw LackOfFoundsException();
             }
