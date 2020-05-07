@@ -23,7 +23,7 @@ public class Login {
                     String pass2 = console.next();
                     boolean auth = a.getid();
                     if (new CSVParser(DATABASE_PATH,CSV_POINT).isAccountInDatabase(name,pass1)&&auth&&pass1.equals(pass2)){
-                        System.out.println("JESTES W BAZIE SUKOO");
+                        System.out.println("JESTES W BAZIE ");
                     }
                     else{
                         starter();

@@ -22,7 +22,6 @@ public class CSVParser {
         }
         return false;
     }
-
     public void parseCSV () throws FileNotFoundException {
         try {
             File myObj = new File(path);
