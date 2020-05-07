@@ -2,9 +2,10 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 public class Authorization {
-    private byte counter= 0;
-    private boolean getid() throws InterruptedException {
 
+
+    private byte counter= 0;
+    public boolean getid() throws InterruptedException {
         Scanner console = new Scanner(System.in);
         Random r = new Random();
         int pass = (1000+r.nextInt(9999))%10000;
@@ -26,10 +27,9 @@ public class Authorization {
             TimeUnit.SECONDS.sleep(2);
             getid();
         }
-        return false;
+        return true;
     }
     public static void main(String[] args) throws InterruptedException {
-	    Authorization a = new Authorization();
-        System.out.println(a.getid());
+	    new Authorization().getid();
     }
 }
