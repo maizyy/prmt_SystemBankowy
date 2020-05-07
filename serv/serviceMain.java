@@ -8,7 +8,7 @@ public class serviceMain {
     String serviceId;
     double serviceValue;
     int serviceReceiver;
-    int serviceOther;
+    int servicePeriod;
     
     double accountValue;
 
@@ -26,8 +26,23 @@ public class serviceMain {
      * @param accountValue
      * @return
      */
-    public double accountAfterService(double o, double accountValue){
-        return accountValue-o;
+    public double accountAfterTransfer(double sV, double accountValue){
+        return accountValue-sV;
+    }
+    /**
+     * Metoda procentu składanego. Na poczet tej procedury @param sV rozłożymy na dwie części, część powyżej 1 będzie określała procent lokaty 
+     * a część poniżej 1 będzie określała ilość kapitalizacji w ciągu roku. Czyli, np: 3.6 określa nam lokatę 3% z kapitalizacją co dwa miesiące (12/6).
+     * @param accountValue
+     * @param p
+     * @param sV
+     * @return
+     */
+    public double accountAfterInvestment(double accountValue, int p, double sV){
+        String sVal= ""+ sV;
+        String[] investmentData =sVal.split(".");
+        Int rate = Ineger.parseInt(investmentData[0]);
+        Int capInterest = Integer.parseInt(investmentData[1]);
+        return accountValue*((1+(rate/(100*capInterest)))^(p*capInterest));
     }
 
     public void TransferWriter(File clientTransferFile, double serviceValue, int serviceReceiver, double accountValue){
@@ -66,5 +81,9 @@ public class serviceMain {
         }else{
            TransferWriter(clientTransferFile, serviceValue, serviceReceiver, accountValue);
         }
+    }
+
+    public void newInvestment(String clientId, String serviceId, double serviceValue,int servicePeriod, double accountValue){
+        File clientInvestmentFile= new File(clientId+"investment");
     }
 }
