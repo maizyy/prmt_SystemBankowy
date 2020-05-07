@@ -18,7 +18,7 @@ public class Authorization {
             return true;
         }
         else if(counter >= counterLimit){
-            System.out.println("Zawieszony dostep poczekaj 5s");
+            System.out.println("Zawieszony dostep!");
             return false;
         }
         else {

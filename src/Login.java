@@ -15,6 +15,19 @@ public class Login {
             switch (sw ){
                 case 1: {
                     System.out.println("LOGOWANIE");
+                    System.out.print("Podaj nazwe uzytkownika: ");
+                    String name = console.next();
+                    System.out.print("Podaj haslo: ");
+                    String pass1 = console.next();
+                    System.out.print("Potwierdz haslo: ");
+                    String pass2 = console.next();
+                    boolean auth = a.getid();
+                    if (new CSVParser(DATABASE_PATH,CSV_POINT).isAccountInDatabase(name,pass1)&&auth&&pass1.equals(pass2)){
+                        System.out.println("JESTES W BAZIE SUKOO");
+                    }
+                    else{
+                        starter();
+                    }
 
                     break;
                 }
@@ -29,7 +42,7 @@ public class Login {
                     boolean auth = a.getid();
                     if (pass1.equals(pass2)&& auth){
                         new CreateAccount().create(name,pass1);
-                        System.out.println("Własnie załozyles konto !!!!");
+                        CSVParser csv = new CSVParser(DATABASE_PATH,CSV_POINT);
                     }
                     else{
                         System.out.println("zle podane haslo spobuj zarejestrowac sie jeszcze raz");
@@ -53,8 +66,6 @@ public class Login {
 
 
     }
-
-
 
 
     public static void main(String[] args) throws InterruptedException, IOException {
