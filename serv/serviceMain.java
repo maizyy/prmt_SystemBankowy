@@ -74,12 +74,28 @@ public class ServiceMain {
 
     public void InvestmentWriter(File clientInvestmentFile, double serviceValue, int servicePeriod, double accountValue){
         try{
-            BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(clientInvestmentFile)));
-            String[] newRequest = {toString(serviceValue), toString(servicePeriod),toString(accountAfterInvestment(accountValue, servicePeriod, serviceValue))};
-            System.out.println(newRequest[0]);
             Double accountAfterService= accountAfterInvestment(accountValue, servicePeriod, serviceValue);
-            // Writer(bw, newRequest, accountAfterService);
-        }catch(FileNotFoundException e){
+            System.out.println(accountAfterService);
+            if(accountAfterService>=0){
+                BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(clientInvestmentFile)));
+                String[] newRequest = {toString(serviceValue), toString(servicePeriod), toString(accountAfterService)};
+                saver.add(newRequest);
+                System.out.println(newRequest[0]);
+                for(int i=0; i<saver.size(); i++){
+                    String def=" ";
+                    String[] line = saver.get(i);
+                    for(int j=0; j<3; j++){
+                        def=def+line[j]+";";
+                    }
+                    System.out.println(def);
+                    bw.write(def);
+                    bw.newLine();
+                }
+                bw.close();
+            }else{
+                System.out.println("oj -1 byczku -1");
+            }
+        }catch(IOException e){
             System.out.println("oj -1 byczku-1");
         }
     }
@@ -132,12 +148,13 @@ public class ServiceMain {
     public static void main(String[] args){
         String clientId = "Najman";
         double accountValue = 60.0;
-        double serviceValue = 40.0;
+        double serviceValue = 3.4;
         int serviceReceiver = 3333;
+        int servicePeriod =1;
 
         ServiceMain tranfer1 = new ServiceMain();
 
-        tranfer1.newTransfer(clientId, serviceValue, serviceReceiver, accountValue);
+        tranfer1.newInvestment(clientId, serviceValue, servicePeriod, accountValue);
 
     }
 }
