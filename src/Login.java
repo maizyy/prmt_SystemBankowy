@@ -6,10 +6,11 @@ public class Login {
     public final int BASE_BALANCE = 0;
     public final int BASE_INVEST = 0;
     public final char CSV_POINT = ';';
-    private void starter() throws InterruptedException {
+    public void starter() throws InterruptedException {
         Scanner console = new Scanner(System.in);
         Authorization a = new Authorization();
-        System.out.print("Operacje:\n 1 - logowanie \n 2 - zakładanie konta \nWybieram: ");
+        System.out.print("Operacje:\n 1 - logowanie \n 2 - zakładanie konta \n 0 - wyjście z programu\nWybieram: ");
+
         try{
             int sw = console.nextInt();
             switch (sw ){
@@ -23,7 +24,7 @@ public class Login {
                     String pass2 = console.next();
                     boolean auth = a.getid();
                     if (new CSVParser(DATABASE_PATH,CSV_POINT).isAccountInDatabase(name,pass1)&&auth&&pass1.equals(pass2)){
-                        System.out.println("JESTES W BAZIE ");
+                        Account acc = new Account(name,pass1);
                     }
                     else{
                         starter();

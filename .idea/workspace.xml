@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="ed0379d0-86cf-42ff-9c6f-0abb728a1d5e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Authorization.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Authorization.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CSVParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CSVParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Login.java" afterDir="false" />
     </list>
@@ -32,7 +34,7 @@
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
-  <component name="RunManager" selected="Application.Login">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="CSVParser" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="CSVParser" />
       <module name="prmtP" />
@@ -65,17 +67,17 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.CSVParser" />
       <item itemvalue="Application.CreateAccount" />
       <item itemvalue="Application.Login" />
       <item itemvalue="Application.Main" />
-      <item itemvalue="Application.CSVParser" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.Login" />
         <item itemvalue="Application.CSVParser" />
         <item itemvalue="Application.CreateAccount" />
-        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -101,22 +103,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1588838802934" />
-    <state width="1493" height="261" key="GridCell.Tab.0.bottom" timestamp="1588865439572">
+    <state width="1493" height="218" key="GridCell.Tab.0.bottom" timestamp="1589304249213">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1588865439572" />
-    <state width="1493" height="261" key="GridCell.Tab.0.center" timestamp="1588865439572">
+    <state width="1493" height="218" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1589304249213" />
+    <state width="1493" height="218" key="GridCell.Tab.0.center" timestamp="1589304249213">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1588865439572" />
-    <state width="1493" height="261" key="GridCell.Tab.0.left" timestamp="1588865439572">
+    <state width="1493" height="218" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1589304249213" />
+    <state width="1493" height="218" key="GridCell.Tab.0.left" timestamp="1589304249213">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1588865439572" />
-    <state width="1493" height="261" key="GridCell.Tab.0.right" timestamp="1588865439572">
+    <state width="1493" height="218" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1589304249213" />
+    <state width="1493" height="218" key="GridCell.Tab.0.right" timestamp="1589304249213">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1588865439572" />
+    <state width="1493" height="218" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1589304249213" />
     <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1588865439572">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -133,10 +135,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1588865439572" />
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1588838784322">
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1589298277152">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1588838784322" />
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1589298277152" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1588862226076">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

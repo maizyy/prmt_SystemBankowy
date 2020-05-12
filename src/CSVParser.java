@@ -22,6 +22,10 @@ public class CSVParser {
         }
         return false;
     }
+    public String[] getInf(String name, String password){
+        int num = numberInDatabase(name,password);
+        return data.get(num);
+    }
     public void parseCSV () throws FileNotFoundException {
         try {
             File myObj = new File(path);
