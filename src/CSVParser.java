@@ -78,6 +78,16 @@ public class CSVParser {
         data.set(index,line);
         write();
     }
+    public void deleteFromDatabase(String name, String password){
+        int index = numberInDatabase(name,password);
+        data.remove(index);
+        write();
+    }
+
+
+
+
+
     @Override
     public String toString() {
         StringBuilder res = new StringBuilder();

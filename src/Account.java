@@ -1,4 +1,6 @@
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -15,12 +17,11 @@ public class Account extends Login {
         p = pass1;
         init();
     }
-
     private void init(){
         Scanner console = new Scanner(System.in);
         accountInf = csv.getInf(n, p);
         System.out.println("Witaj "+ n +", Twój numer konta : "+accountInf[0]+"\n1 - Sprawdź stan konta\n2 - Zrób " +
-                "przelew\n3 - Lokata\n4 - Dodaj srodki na konto\n0 - Wyloguj");
+                "przelew\n3 - Lokata\n4 - Dodaj srodki na konto\n5 - Usuń konto\n0 - Wyloguj");
         System.out.print("Wybieram: ");
         try {
             int sw = console.nextInt();
@@ -41,6 +42,11 @@ public class Account extends Login {
                     break;
                 }
                 case 3: {
+                    System.out.print("Podaj numer lokaty: ");
+                    int investmentNumber = console.nextInt();
+                    System.out.print("Ilość pieniędzy : ");
+                    int value = console.nextInt();
+                    investment(investmentNumber,value);
                     init();
                     break;
                 }
@@ -55,6 +61,11 @@ public class Account extends Login {
                     starter();
                     break;
                 }
+                case 5: {
+                    delete();
+                    starter();
+                    break;
+                }
             }
         }catch (Exception e){
             e.getStackTrace();
@@ -64,8 +75,8 @@ public class Account extends Login {
 
     private void transfer(int receive, int value) throws IOException {
         changeBalance(value,'-');
-        FileWriter writeFile = new FileWriter("baza"+ System.getProperty("file.separator")+accountInf[1]+"_transfer" +
-                ".txt", true);
+        FileWriter writeFile = new FileWriter("baza"+ System.getProperty("file.separator")+"transfers"+System.getProperty("file" +
+                        ".separator")+accountInf[1]+ "_transfer.txt", true);
         Date nowDate = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
         String tmp = sdf.format(nowDate)+"\n";
@@ -76,17 +87,38 @@ public class Account extends Login {
         writeFile.close();
         System.out.println("Przelew wykonany!!!");
     }
-    private void investment(){
-        System.out.println("investment");
+    private void investment(int receive, int value) throws IOException {
+        changeBalance(value,'-');
+        FileWriter writeFile =
+                new FileWriter("baza"+ System.getProperty("file.separator")+"investments"+System.getProperty("file" +
+                        ".separator")+accountInf[1]+
+                "_investment" +
+                ".txt", true);
+        Date nowDate = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+        String tmp = sdf.format(nowDate)+"\n";
+        tmp += "    Lokata założona na koncie : "+ receive+"\n";
+        tmp += "    Kwota: "+ value+"\n\n";
+        writeFile.write(tmp);
+        writeFile.flush();
+        writeFile.close();
+        System.out.println("Lokata wykonana wykonana!!!");
     }
+    private void delete() throws FileNotFoundException {
+        new CSVParser(DATABASE_PATH,CSV_POINT).deleteFromDatabase(n,p);
+        File transferFile = new File("baza"+ System.getProperty("file.separator")+"transfers"+System.getProperty(
+                "file" + ".separator")+accountInf[1]+ "_transfer.txt");
+        File investmentFile = new File("baza"+ System.getProperty("file.separator")+"investments"+System.getProperty(
+                "file" + ".separator")+accountInf[1]+"_investment.txt");
+        if (transferFile.exists()){
+            transferFile.delete();
+        }
+        if (investmentFile.exists()){
+            investmentFile.delete();
+        }
 
-    public static void main(String[] args) throws IOException {
-        new Account("Grzegorz","Iz");
+        System.out.println("Twoje konto zostało usunięte");
     }
-
-
-
-
     private void changeBalance(int value,char operation) throws IOException {
         int tmp = Integer.parseInt(accountInf[3]);
         if (operation == '-'){
@@ -104,6 +136,15 @@ public class Account extends Login {
         accountInf[3] = String.valueOf(tmp);
         csv.changeLineInDatabase(n,p,accountInf);
     }
+
+    public static void main(String[] args) throws IOException {
+        new Account("Grzegorz","Iz");
+    }
+
+
+
+
+
 
 
 

@@ -9,6 +9,7 @@ public class Login {
     public final char CSV_POINT = ';';
 
     public Login() {
+
     }
 
     public void starter() throws InterruptedException {
