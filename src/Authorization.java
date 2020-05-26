@@ -8,7 +8,7 @@ public class Authorization {
     public boolean getid() throws InterruptedException {
         Scanner console = new Scanner(System.in);
         Random r = new Random();
-        int pass = (r.nextInt(9999) + 1000)%10000;
+        int pass = (r.nextInt(9000) + 1000);
         System.out.println("Twoje haslo bezpieczenstwa: "+pass);
         System.out.print("Wpisz haslo by potwierdzic: ");
         int checkPass = console.nextInt();
@@ -24,11 +24,13 @@ public class Authorization {
         else {
             System.out.println("Sprobuj ponownie");
             counter++;
-            TimeUnit.SECONDS.sleep(2);
+            TimeUnit.SECONDS.sleep(1);
             getid();
         }
         return true;
     }
+
+
     public static void main(String[] args) throws InterruptedException {
 	    new Authorization().getid();
 

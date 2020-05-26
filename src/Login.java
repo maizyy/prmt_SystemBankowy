@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Login {
@@ -6,6 +7,10 @@ public class Login {
     public final int BASE_BALANCE = 0;
     public final int BASE_INVEST = 0;
     public final char CSV_POINT = ';';
+
+    public Login() {
+    }
+
     public void starter() throws InterruptedException {
         Scanner console = new Scanner(System.in);
         Authorization a = new Authorization();
@@ -72,10 +77,6 @@ public class Login {
     public static void main(String[] args) throws InterruptedException, IOException {
        Login login = new Login();
        login.starter();
-
-
-
-
 
     }
 
