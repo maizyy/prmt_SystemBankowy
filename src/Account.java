@@ -1,13 +1,10 @@
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.*;
-
 public class Account extends Login {
-
     public String n;
     public String p;
     public String[] accountInf;
@@ -72,7 +69,6 @@ public class Account extends Login {
             System.err.println("oj -1 byczku -1");
         }
     }
-
     private void transfer(int receive, int value) throws IOException {
         changeBalance(value,'-');
         FileWriter writeFile = new FileWriter("baza"+ System.getProperty("file.separator")+"transfers"+System.getProperty("file" +

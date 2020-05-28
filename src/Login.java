@@ -7,11 +7,9 @@ public class Login {
     public final int BASE_BALANCE = 0;
     public final int BASE_INVEST = 0;
     public final char CSV_POINT = ';';
-
     public Login() {
 
     }
-
     public void starter() throws InterruptedException {
         Scanner console = new Scanner(System.in);
         Authorization a = new Authorization();
@@ -35,7 +33,6 @@ public class Login {
                     else{
                         starter();
                     }
-
                     break;
                 }
                 case 2: {
@@ -62,24 +59,16 @@ public class Login {
                     break;
                 }
             }
-
-
         }catch (Exception e){
             e.getStackTrace();
             System.err.println("oj -1 byczku -1");
         }
-
-
-
-
     }
-
 
     public static void main(String[] args) throws InterruptedException, IOException {
        Login login = new Login();
        login.starter();
 
     }
-
 
 }

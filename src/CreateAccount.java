@@ -15,7 +15,6 @@ public class CreateAccount extends Login {
              accountNumbers.add(Integer.parseInt(row[0]));
          }
     }
-
     public void create(String name,String password) throws IOException, InterruptedException {
         FileWriter fw = new FileWriter(DATABASE_PATH,true);
         Random r = new Random();
@@ -36,7 +35,6 @@ public class CreateAccount extends Login {
         fw.flush();
         fw.close();
     }
-
     public static void main(String[] args) throws IOException, InterruptedException {
         CreateAccount c = new CreateAccount();
         for (int i = 0; i < 1000000; i++) {
@@ -47,8 +45,4 @@ public class CreateAccount extends Login {
         System.out.println(c.accountNumbers.size());
         System.out.println(c.accountNumbers);
     }
-
-
-
-
 }

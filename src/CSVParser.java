@@ -83,11 +83,6 @@ public class CSVParser {
         data.remove(index);
         write();
     }
-
-
-
-
-
     @Override
     public String toString() {
         StringBuilder res = new StringBuilder();
